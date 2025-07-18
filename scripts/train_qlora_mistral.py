@@ -1,26 +1,40 @@
-import os, torch, argparse
-from datasets import load_from_disk  # ✅ switched from load_dataset
+import os
+import torch
+import argparse
+from datasets import load_from_disk, concatenate_datasets
 from transformers import (
     AutoModelForCausalLM,
     TrainingArguments, Trainer,
     BitsAndBytesConfig, DataCollatorForLanguageModeling,
+    LlamaTokenizer,
 )
-from transformers import LlamaTokenizer
 from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
 
-def format_prompt(example):
+# ─── Dataset Formatting Functions ────────────────────────────────────
+def format_hle(example):
     return {
         "text": f"### Instruction:\n{example['question']}\n\n### Response:\n{example['answer']}\n\n### Rationale:\n{example['rationale']}"
     }
 
-def tokenize(example, tokenizer, max_length):
-    return tokenizer(
-        example["text"], truncation=True, padding="max_length", max_length=max_length
-    )
+def format_dolly(example):
+    return {
+        "text": f"### Instruction:\n{example['instruction']}\n\n### Response:\n{example['response']}"
+    }
 
+def format_gutenberg(example):
+    return {"text": example["text"]}
+
+def format_orca(example):
+    return {
+        "text": f"### System:\n{example['system_prompt']}\n\n### User:\n{example['question']}\n\n### Assistant:\n{example['response']}"
+    }
+
+def tokenize(example, tokenizer, max_length):
+    return tokenizer(example["text"], truncation=True, padding="max_length", max_length=max_length)
+
+# ─── Main Training Script ────────────────────────────────────────────
 def main():
     parser = argparse.ArgumentParser(description="Train Mistral 7B with QLoRA")
-    parser.add_argument("--data_path", default="data/hle", help="Path to local dataset saved from HF")
     parser.add_argument("--output_dir", default="qlora_mistral_output", help="Where to save adapters")
     parser.add_argument("--model_name", default="/mnt/c/Users/pkidw/hf_models/mistral-7b", help="Path to local base model")
     parser.add_argument("--epochs", type=int, default=1)
@@ -30,9 +44,16 @@ def main():
     parser.add_argument("--grad_accum", type=int, default=2)
     args = parser.parse_args()
 
-    # ─── Load and format dataset ─────────────────────────────────────
-    full_dataset = load_from_disk(args.data_path)["test"]  # ✅ Only 'test' split exists
-    full_dataset = full_dataset.map(format_prompt)
+    # Base directory resolution
+    base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+
+    # ─── Load and format datasets ─────────────────────────────────────
+    hle_ds = load_from_disk(os.path.join(base_dir, "data", "hle"))["test"].map(format_hle)
+    dolly_ds = load_from_disk(os.path.join(base_dir, "local_datasets", "dolly"))["train"].map(format_dolly)
+    gutenberg_ds = load_from_disk(os.path.join(base_dir, "local_datasets", "gutenberg_en")).map(format_gutenberg)
+    orca_ds = load_from_disk(os.path.join(base_dir, "local_datasets", "openorca"))["train"].map(format_orca)
+
+    full_dataset = concatenate_datasets([hle_ds, dolly_ds, gutenberg_ds, orca_ds])
     split_dataset = full_dataset.train_test_split(test_size=0.1, seed=42)
     train_data = split_dataset["train"]
     val_data = split_dataset["test"]
@@ -90,7 +111,7 @@ def main():
         fp16=True,
         save_strategy="epoch",
         save_total_limit=1,
-        report_to=[],  # Add wandb/tensorboard if needed
+        report_to=[],
     )
 
     # ─── Train the model ────────────────────────────────────────────

@@ -11,3 +11,17 @@ __pycache__/
 *.py[cod]
 .idea/
 *.iml
+# Python
+*.pyc
+__pycache__/
+.venv/
+.env
+*.log
+
+# Hugging Face cache
+~/.cache/huggingface/
+*.arrow
+
+# Output directories
+qlora_mistral_output/
+checkpoints/
