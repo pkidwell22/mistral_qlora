@@ -1,0 +1,39 @@
+{
+  "os": "Windows-10-10.0.26100-SP0",
+  "python": "CPython 3.11.9",
+  "startedAt": "2025-07-22T21:38:39.361151Z",
+  "program": "C:\\Users\\pkidw\\PycharmProjects\\mistral_qlora\\scripts\\train_qlora_gutenberg.py",
+  "codePath": "PycharmProjects\\mistral_qlora\\scripts\\train_qlora_gutenberg.py",
+  "codePathLocal": "train_qlora_gutenberg.py",
+  "git": {
+    "remote": "https://github.com/yourname/your-repo.git"
+  },
+  "email": "patrickthomaskidwell@gmail.com",
+  "root": "C:\\Users\\pkidw\\PycharmProjects\\mistral_qlora\\scripts",
+  "host": "Patrick",
+  "executable": "C:\\Users\\pkidw\\PycharmProjects\\mistral_qlora\\.venv\\Scripts\\python.exe",
+  "cpu_count": 10,
+  "cpu_count_logical": 16,
+  "gpu": "NVIDIA GeForce RTX 4060",
+  "gpu_count": 1,
+  "disk": {
+    "/": {
+      "total": "1999437295616",
+      "used": "1364986597376"
+    }
+  },
+  "memory": {
+    "total": "34187681792"
+  },
+  "gpu_nvidia": [
+    {
+      "name": "NVIDIA GeForce RTX 4060",
+      "memoryTotal": "8585740288",
+      "cudaCores": 3072,
+      "architecture": "Ada",
+      "uuid": "GPU-f2bdce56-9bdb-aa77-f3cd-200a55e5e5e2"
+    }
+  ],
+  "cudaVersion": "12.9",
+  "writerId": "4t3f5zmnhdidkkehyt8s53vpwk58uk3p"
+}

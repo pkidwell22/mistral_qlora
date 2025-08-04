@@ -1,0 +1,86 @@
+_wandb:
+    value:
+        cli_version: 0.21.0
+        e:
+            4t3f5zmnhdidkkehyt8s53vpwk58uk3p:
+                codePath: PycharmProjects\mistral_qlora\scripts\train_qlora_gutenberg.py
+                codePathLocal: train_qlora_gutenberg.py
+                cpu_count: 10
+                cpu_count_logical: 16
+                cudaVersion: "12.9"
+                disk:
+                    /:
+                        total: "1999437295616"
+                        used: "1364986597376"
+                email: patrickthomaskidwell@gmail.com
+                executable: C:\Users\pkidw\PycharmProjects\mistral_qlora\.venv\Scripts\python.exe
+                git:
+                    remote: https://github.com/yourname/your-repo.git
+                gpu: NVIDIA GeForce RTX 4060
+                gpu_count: 1
+                gpu_nvidia:
+                    - architecture: Ada
+                      cudaCores: 3072
+                      memoryTotal: "8585740288"
+                      name: NVIDIA GeForce RTX 4060
+                      uuid: GPU-f2bdce56-9bdb-aa77-f3cd-200a55e5e5e2
+                host: Patrick
+                memory:
+                    total: "34187681792"
+                os: Windows-10-10.0.26100-SP0
+                program: C:\Users\pkidw\PycharmProjects\mistral_qlora\scripts\train_qlora_gutenberg.py
+                python: CPython 3.11.9
+                root: C:\Users\pkidw\PycharmProjects\mistral_qlora\scripts
+                startedAt: "2025-07-22T21:38:39.361151Z"
+                writerId: 4t3f5zmnhdidkkehyt8s53vpwk58uk3p
+        m: []
+        python_version: 3.11.9
+        t:
+            "1":
+                - 1
+                - 5
+                - 11
+                - 49
+                - 51
+                - 53
+                - 71
+                - 98
+                - 105
+            "2":
+                - 1
+                - 5
+                - 11
+                - 49
+                - 51
+                - 53
+                - 71
+                - 98
+                - 105
+            "3":
+                - 13
+                - 16
+            "4": 3.11.9
+            "5": 0.21.0
+            "6": 4.53.2
+            "8":
+                - 3
+            "12": 0.21.0
+            "13": windows-amd64
+batch_size:
+    value: 1
+epochs:
+    value: 2
+eval_only:
+    value: false
+grad_accum:
+    value: 2
+lr:
+    value: 0.0002
+max_length:
+    value: 512
+mixed:
+    value: false
+model_name:
+    value: C:/Users/pkidw/PycharmProjects/hf_models/mistral-7b
+output_dir:
+    value: qlora_outputs/base_gutenberg_2ep
