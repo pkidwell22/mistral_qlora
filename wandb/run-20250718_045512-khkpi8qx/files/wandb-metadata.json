@@ -1,0 +1,44 @@
+{
+  "os":  "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "python":  "CPython 3.12.3",
+  "startedAt":  "2025-07-18T08:55:12.788486Z",
+  "args":  [
+    "--mixed",
+    "--output_dir",
+    "adapters/stage1_mix"
+  ],
+  "program":  "/home/pkidwell/mistral_qlora/scripts/train_qlora_mistral.py",
+  "codePath":  "scripts/train_qlora_mistral.py",
+  "codePathLocal":  "scripts/train_qlora_mistral.py",
+  "git":  {
+    "remote":  "git@github.com:pkidwell22/mistral_qlora.git",
+    "commit":  "1323e2a759f26fdca0f7e377d1c9df6a7a57259b"
+  },
+  "email":  "patrickthomaskidwell@gmail.com",
+  "root":  "/home/pkidwell/mistral_qlora",
+  "host":  "Patrick",
+  "executable":  "/home/pkidwell/mistral-venv/bin/python",
+  "cpu_count":  8,
+  "cpu_count_logical":  16,
+  "gpu":  "NVIDIA GeForce RTX 4060",
+  "gpu_count":  1,
+  "disk":  {
+    "/":  {
+      "total":  "1081101176832",
+      "used":  "185671880704"
+    }
+  },
+  "memory":  {
+    "total":  "16680939520"
+  },
+  "gpu_nvidia":  [
+    {
+      "name":  "NVIDIA GeForce RTX 4060",
+      "memoryTotal":  "8585740288",
+      "architecture":  "Ada",
+      "uuid":  "GPU-f2bdce56-9bdb-aa77-f3cd-200a55e5e5e2"
+    }
+  ],
+  "cudaVersion":  "12.9",
+  "writerId":  "2elaa3gmfe6nugmiy7s3kwk1lrl9xgd9"
+}

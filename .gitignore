@@ -1,0 +1,27 @@
+# Don’t track venvs
+mistral-venv/
+.venv/
+
+# Don’t track large data or model outputs
+data/
+qlora_mistral_output/
+
+# Bytecode, logs, IDE files
+__pycache__/
+*.py[cod]
+.idea/
+*.iml
+# Python
+*.pyc
+__pycache__/
+.venv/
+.env
+*.log
+
+# Hugging Face cache
+~/.cache/huggingface/
+*.arrow
+
+# Output directories
+qlora_mistral_output/
+checkpoints/
